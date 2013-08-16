@@ -90,15 +90,17 @@ GRANT ALL PRIVILEGES ON DATABASE wordpress to wordpress;
 
 * Open /Applications/MAMP/Library/bin/envvars and add
 
-    export DATABASE_URL="postgres://wordpress:wordpress@localhost:5432/wordpress"
-    export WP_AUTH_KEY='put your unique phrase here'
-    export WP_SECURE_AUTH_KEY='put your unique phrase here'
-    export WP_LOGGED_IN_KEY='put your unique phrase here'
-    export WP_NONCE_KEY='put your unique phrase here'
-    export WP_AUTH_SALT='put your unique phrase here'
-    export WP_SECURE_AUTH_SALT='put your unique phrase here'
-    export WP_LOGGED_IN_SALT='put your unique phrase here'
-    export WP_NONCE_SALT='put your unique phrase here'
+```
+export DATABASE_URL="postgres://wordpress:wordpress@localhost:5432/wordpress"
+export WP_AUTH_KEY='put your unique phrase here'
+export WP_SECURE_AUTH_KEY='put your unique phrase here'
+export WP_LOGGED_IN_KEY='put your unique phrase here'
+export WP_NONCE_KEY='put your unique phrase here'
+export WP_AUTH_SALT='put your unique phrase here'
+export WP_SECURE_AUTH_SALT='put your unique phrase here'
+export WP_LOGGED_IN_SALT='put your unique phrase here'
+export WP_NONCE_SALT='put your unique phrase here'
+```
 
 Where the latter values can be generated [here](https://api.wordpress.org/secret-key/1.1/salt/). The values there are the corresponding values to above
 except without the `WP_` prefix.
