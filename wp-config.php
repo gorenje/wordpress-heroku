@@ -45,14 +45,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         ':x^R_rN$XpT6ome+R}[ ILg4.=G6F=}88@tdi=GP+z-^HE_eVl4(-#U<[g8<-wV8');
-define('SECURE_AUTH_KEY',  'gh^`6d>,jID=Ej/1dZxy-.K[CZ1_qGr~Vw6?+uTLRm|C^ShTVXV[m#iNW0u|Iq?Y');
-define('LOGGED_IN_KEY',    'T|+T90l&+q|,z>gGo(`}<u_nyRASVUKYYvX|X|!)#CpR#;y>M1f&Nndw:W2Dxm,>');
-define('NONCE_KEY',        'R&00|+|dN=4zlxW**f?sI_)s`G 5GzN#Pu.+NIq/B5F&SM,OO,Waa&/G)NM`<JT4');
-define('AUTH_SALT',        '2/D~bCm7dV.?[<CKih-%DBEaxE??K<eVflHhXPW1J.+~|*>w~1uog0cL1H8,ar{,');
-define('SECURE_AUTH_SALT', '2$4zuz JI&tO6$:ITorJY<;#-R@,u.nbVoURy$|:qq40W4D2aW=V6TlktwVgf!72');
-define('LOGGED_IN_SALT',   'E3sV[^gUb?-~;<`<SzRB:bXMPM3~!t!3Yu(Up^U-$5K6=0}Me6)&-(mr>{xX~wis');
-define('NONCE_SALT',       '<8tWlk@b`Z 9TAZ#?0B_~<gT1DK8&Cwc9!wF`*Lb;dF!pW+f2~F#Rihdi{+{Ylz<');
+define('AUTH_KEY',         $_ENV['WP_AUTH_KEY']);
+define('SECURE_AUTH_KEY',  $_ENV['WP_SECURE_AUTH_KEY']);
+define('LOGGED_IN_KEY',    $_ENV['WP_LOGGED_IN_KEY']);
+define('NONCE_KEY',        $_ENV['WP_NONCE_KEY']);
+define('AUTH_SALT',        $_ENV['WP_AUTH_SALT']);
+define('SECURE_AUTH_SALT', $_ENV['WP_SECURE_AUTH_SALT']);
+define('LOGGED_IN_SALT',   $_ENV['WP_LOGGED_IN_SALT']);
+define('NONCE_SALT',       $_ENV['WP_NONCE_SALT']);
 
 
 /**#@-*/
