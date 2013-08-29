@@ -7,46 +7,46 @@ require_once dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."gianism_controller.
  * @author guy
  */
 class Google_Controller extends Gianism_Controller{
-
+	
 	/**
 	 * @var string
 	 */
 	private $consumer_key = '';
-
+	
 	/**
 	 * @var string
 	 */
 	private $consumer_secret = '';
-
+	
 	/**
 	 * @var string
 	 */
 	private $redirect_uri = '';
-
+	
 	/**
 	 * @var string
 	 */
 	public $umeta_account = '_wpg_google_account';
-
+	
 	/**
 	 * @var string
 	 */
 	public $umeta_plus = "_wpg_google_plus_id";
-
+	
 	/**
 	 * @var apiClient
 	 */
 	private $_oauth = null;
-
+	
 	/**
 	 * @var apiPlusService
 	 */
 	private $plus = null;
-
-
+	
+	
 	/**
 	 * Set up option
-	 * @param array $option
+	 * @param array $option 
 	 */
 	protected function set_option($option) {
 		$option = shortcode_atts(array(
@@ -61,12 +61,12 @@ class Google_Controller extends Gianism_Controller{
 			session_start();
 		}
 	}
-
+	
 	/**
 	 * Executed on init hoook
 	 * @global int $user_ID
 	 * @global wpdb $wpdb
-	 * @global WP_Gianism $gianism
+	 * @global WP_Gianism $gianism 
 	 */
 	public function init_action(){
 		if(!$this->is_endpoint()){
@@ -124,7 +124,7 @@ EOS;
 					$this->api()->authenticate();
 					if($this->api()->getAccessToken()){
 						$profile = $this->get_profile();
-						if(!empty($profile) && preg_match('/\@wooga\.(net|com)$/',$profile['email']) === 1){
+						if(!empty($profile)){
 							$email = $profile['email'];
 							$plus_id = isset($profile['id']) ? $profile['id'] : 0;
 							$user_id = email_exists($email);
@@ -158,18 +158,9 @@ EOS;
 									}
 								}
 							}
-            } else {
-              if(isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'google_disconnect')){
-                delete_user_meta($user_ID, $this->umeta_account);
-                delete_user_meta($user_ID, $this->umeta_plus);
-                $this->add_message(sprintf($gianism->_("Disconected your %s account."), "Google"));
-                $this->do_redirect();
-              }
-              break;
-            }
+						}
 					}
 					if(!$user_id || is_wp_error($user_id)){
-die('hello');
 						$this->add_message('Oops, Failed to Authenticate.');
 						$this->set_redirect(wp_login_url($this->get_redirect()));
 					}else{
@@ -180,7 +171,7 @@ die('hello');
 				break;
 		}
 	}
-
+	
 	/**
 	 * Output google connect
 	 * @global WP_Gianism $gianism
@@ -195,7 +186,6 @@ die('hello');
 		$google_account = get_user_meta($user_ID, $this->umeta_account, true);
 		if($google_account){
 			$url = wp_nonce_url($this->redirect_uri, 'google_disconnect');
-			//$this->set_redirect(admin_url('profile.php'));
 			$this->set_redirect(admin_url('profile.php'));
 			$this->set_action('google_disconnect');
 			$link_text = $gianism->_('Disconnect');
@@ -224,10 +214,10 @@ die('hello');
 		</tr>
 		<?php
 	}
-
+	
 	/**
 	 * Echo login form
-	 * @global WP_Gianism $gianism
+	 * @global WP_Gianism $gianism 
 	 */
 	public function login_form(){
 		global $gianism;
@@ -244,7 +234,7 @@ die('hello');
 EOS;
 		echo $this->filter_link($mark_up, $url, $link_text, 'google');
 }
-
+	
 	/**
 	 *
 	 * @param string $redirect
@@ -273,7 +263,7 @@ EOS;
 		}
 		return $this->_oauth;
 	}
-
+	
 	/**
 	 * Returns Profile
 	 * @return array
@@ -284,17 +274,17 @@ EOS;
 		$resp = apiClient::$io->makeRequest($req)->getResponseBody();
 		return json_decode($resp, 1);
 	}
-
+	
 	/**
 	 * Save redirect url to session
-	 * @param string $redirect
+	 * @param string $redirect 
 	 */
 	private function set_redirect($redirect){
 		if($_SESSION){
 			$_SESSION['_wpg_ggl_redirect'] = $redirect;
 		}
 	}
-
+	
 	/**
 	 * Returns currentlly saved url.
 	 * @return string
@@ -305,11 +295,11 @@ EOS;
 			unset($_SESSION['_wpg_ggl_redirect']);
 			$redirect = $url;
 		}else{
-			$redirect = home_url();
+			$redirect = admin_url('profile.php');
 		}
 		return apply_filters('gianism_redirect_to', $redirect);
 	}
-
+	
 	/**
 	 * Do redirect on session information
 	 */
@@ -320,17 +310,17 @@ EOS;
 			die();
 		}
 	}
-
+	
 	/**
 	 * Save action name on session.
-	 * @param string $action_name
+	 * @param string $action_name 
 	 */
 	private function set_action($action_name){
 		if(isset($_SESSION)){
 			$_SESSION['_wpg_ggl_action'] = (string)$action_name;
 		}
 	}
-
+	
 	/**
 	 * Returns action name from string
 	 * @return string
@@ -344,17 +334,17 @@ EOS;
 			return "";
 		}
 	}
-
+	
 	/**
 	 * Save message
-	 * @param string $string
+	 * @param string $string 
 	 */
 	protected function add_message($string){
 		if(isset($_SESSION)){
 			$_SESSION['_wpg_ggl_message'] = $string;
 		}
 	}
-
+	
 	/**
 	 * Return if current url is endpoint.
 	 * @return boolean
@@ -366,7 +356,7 @@ EOS;
 		$current_url .= $path[0];
 		return (untrailingslashit($current_url) == untrailingslashit($this->redirect_uri));
 	}
-
+	
 	/**
 	 * Echo message
 	 */
@@ -377,4 +367,3 @@ EOS;
 		}
 	}
 }
-
