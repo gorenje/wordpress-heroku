@@ -20,13 +20,23 @@ body {
   background: #fefefe;
   color: #333;
 }
+h2, h3, h4, h5, h6 {
+  margin-top: 2rem;
+}
+p {
+  margin-bottom: .5rem;
+}
+p + p,
+li + li {
+  margin-top: .5rem;
+}
 header {
   padding: 9rem 0 4rem;
   text-align: center;
 }
 header h1 {
-  font-weight: 200;
-  font-size: 200%;
+  font-family: "Grilled Cheese", sans-serif;
+  font-size: 250%;
   margin: 0;
 }
 header h1 img {
@@ -35,9 +45,6 @@ header h1 img {
   margin-bottom: 1rem;
 }
 header h1 + p {
-  /*  */
-  
-
   font-weight: 200;
   font-size: 100%;
   color: #666;
@@ -85,19 +92,24 @@ footer ul {
 }
 footer li {
   padding: 0;
+  margin: 0;
 }
 footer li a {
-  color: #f7f7f7;
+  color: #ddd;
   display: block;
-  padding: 1rem;
-  font-weight: 200;
+  padding: .5rem 1rem;
+  font-size: .8rem;
   text-decoration: none;  
 }
 footer li a:hover {
-  background: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.1);  
+}
+footer li.current_page_item a {
+  background: rgba(255,255,255,.15);
+  color: #fff;
 }
 /* Big Screen */
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 768px) {
   body {
     margin-left: 15rem;
   }
@@ -115,11 +127,77 @@ footer li a:hover {
     padding: 0;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   header {
     padding: 4rem 3rem 1rem;
   }
   .inner {
     padding: 0 1rem;
   }
+}
+/* Content Elements */
+.well {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 4px #bbb;
+}
+details {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+details:hover {
+  background: #fff;
+  border-color: #bbb;
+}
+summary {
+  cursor: pointer;
+  outline: none;
+  padding: 1rem;
+  margin: -1rem;
+  font-weight: bold;
+}
+summary:hover {
+  color: #0088cc;
+}
+.label {
+  display: inline-block;
+  margin: 0 0 0 1rem;
+  font-size: .8rem;
+  background: #ddd;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  color: #fff;
+  font-weight: normal;
+}
+.label-info {
+  background: #47CACC;
+}
+.label-success {
+  background: #BBE52E;
+}
+.label-warning {
+  background: #F2AE30;
+}
+/* Admin Stuff */
+.post-edit-link {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: #333;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50px;
+  font-size: 10px;
+  margin: 5rem auto;
+}
+.post-edit-link:hover {
+  -webkit-transform: scale(1.6);
+  background: #BBE52E;
+  -webkit-transition: all 1s;
 }

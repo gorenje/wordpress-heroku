@@ -1,7 +1,7 @@
 
   <header id="header">
     <h1><?php the_title(); ?></h1>
-    <p>{{ meta.description }}</p>
+    <p><?php the_excerpt(); ?></p>
   </header>
   <section id="content">
     <div class="inner">
