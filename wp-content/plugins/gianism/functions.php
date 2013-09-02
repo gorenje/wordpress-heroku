@@ -227,3 +227,16 @@ function gianism_login(){
 	global $gianism;
 	$gianism->show_login_form();
 }
+
+/**
+ * Customize redirect URL
+ * @param string $url if not specified, null will be passed.
+ * @return string URL string to redirect to. Null is no-redirect.
+ */
+function _my_redirect_to($url){
+    //Now you can get redirect URL.
+    //Not specified, $url is null.
+    return home_url();
+}
+// Add filter.
+add_filter('gianism_redirect_to', '_my_redirect_to');

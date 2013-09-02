@@ -108,6 +108,26 @@ footer li.current_page_item a {
   background: rgba(255,255,255,.15);
   color: #fff;
 }
+footer a[rel=logout] {
+  color: #ddd;
+  background: rgba(255,255,255,.1);
+  position: absolute;
+  width: 11rem;
+  bottom: 0;
+  display: block;
+  padding: .5rem 1rem;
+  margin: 1rem;
+  font-size: .8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+}
+footer a[rel=logout]:hover {
+  color: #ddd;
+  background: #c00;
+}
+
 /* Big Screen */
 @media screen and (min-width: 768px) {
   body {
@@ -180,6 +200,10 @@ summary:hover {
 }
 .label-warning {
   background: #F2AE30;
+}
+#postmeta {
+  padding-top: 4rem;
+  text-align: center;
 }
 /* Admin Stuff */
 .post-edit-link {
