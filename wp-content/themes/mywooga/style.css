@@ -81,6 +81,8 @@ footer a[rel=home] {
   text-indent: -1000px;
   opacity: .4;
   -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  transition: all .4s;
 }
 footer a[rel=home]:hover {
   opacity: .8;
@@ -163,6 +165,7 @@ footer a[rel=logout]:hover {
   box-shadow: 0 2px 4px #bbb;
 }
 details {
+  display: block;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -221,7 +224,8 @@ summary:hover {
   margin: 5rem auto;
 }
 .post-edit-link:hover {
-  -webkit-transform: scale(1.6);
   background: #BBE52E;
-  -webkit-transition: all 1s;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
 }
