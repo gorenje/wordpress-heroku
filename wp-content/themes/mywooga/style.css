@@ -11,6 +11,10 @@ Tags:
 Text Domain: mywooga
 */
 
+
+html { margin-top: 0 !important; }
+* html body { margin-top: 0 !important; }
+
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -131,24 +135,6 @@ footer a[rel=logout]:hover {
 }
 
 /* Big Screen */
-@media screen and (min-width: 768px) {
-  body {
-    margin-left: 15rem;
-  }
-  footer {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 15rem;
-  }
-  footer ul {
-    margin-top: 2rem;
-  }
-  footer .inner {
-    padding: 0;
-  }
-}
 @media screen and (max-width: 480px) {
   header {
     padding: 4rem 3rem 1rem;
