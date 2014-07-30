@@ -8,5 +8,9 @@
       jQuery('details').details();
     })
   </script>
+  <style type="text/css" media="screen">
+  	html { margin-top: 0 !important; }
+  	* html body { margin-top: 0 !important; }
+  </style>
 </body>
 </html>
